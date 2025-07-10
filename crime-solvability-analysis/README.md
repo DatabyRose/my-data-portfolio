@@ -85,8 +85,8 @@ Five models were trained and compared:
 
 Below are key visualizations featured in the notebook and project folder:
 
-1. **Unsolved Crimes by Neighborhood**
-   > Visualizes the geographic distribution of unsolved cases, revealing hotspots or patterns in specific districts or zones.  
+1. **Solve Rate vs. Crime Volume by Zone**
+   > The plot reveals key zones with high crime volumes and low solve rates—potential hotspots where law enforcement resources might be prioritized.  
    ![unsolved_by_location](visuals/unsolved_by_location.png)
 
 2. **Case Outcome by Age Group**
