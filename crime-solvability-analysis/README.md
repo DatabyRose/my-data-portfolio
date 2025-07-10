@@ -101,7 +101,7 @@ Below are key visualizations featured in the notebook and project folder:
    > Evaluates the performance of the classification model by showing true positives, false positives, true negatives, and false negatives.
    ![confusion_matrix](visuals/confusion_matrix.png)
 
-5. **Feature Importance (Random Forest Tree)**
+5. **Feature Importance (Random Forest)**
    > Ranks the most influential features used by the Random Forest model to predict case solvability, aiding interpretability.
    ![feature_importance](visuals/feature_importance.png)
 
@@ -125,7 +125,7 @@ Below are key visualizations featured in the notebook and project folder:
 
 ---
 
-## ⚠️ Limitations & Future Work
+## Limitations & Future Work
 
 - No oversampling or class weighting applied—future versions could use SMOTE or cost-sensitive learning  
 - Dataset lacks suspect, witness, or forensic data  
