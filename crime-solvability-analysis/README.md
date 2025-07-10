@@ -30,7 +30,7 @@ An end-to-end data analysis and modeling project exploring crime trends and case
 - Merged rare ethnicity values into common categories
 - Ensured consistent formats for gender, location, and date fields
 
-### 2. Exploratory Data Analysis (EDA)
+### 2. Exploratory Data Analysis (EDA)  
 - Crime trends across **age groups**, **gender**, and **ethnicity**
 - Spatial distribution of **unsolved cases by location**
 - Temporal analysis: frequency by year and month
@@ -42,23 +42,44 @@ An end-to-end data analysis and modeling project exploring crime trends and case
 - Binarized target variable: `Solved` vs. `Unsolved`
 
 ### 4. Predictive Modeling
-- Built **Logistic Regression** and **Decision Tree Classifier**
-- Compared performance using:
-  - Accuracy
-  - Confusion matrix
-  - Classification report
-- Assessed **feature importance**
+Five models were trained and compared:
+- Logistic Regression  
+- Random Forest  
+- Gradient Boosting  
+- XGBoost (Untuned)  
+- XGBoost (Tuned)
+
+**Metrics Used**: Accuracy, Precision, Recall, F1-score, AUC  
+**Class Imbalance**: ~22.5% solved vs. ~77.5% unsolved  
+*Note: No resampling or class weighting applied in this version.*
 
 ---
 
-## Key Results
+## 📈 Results Summary
 
-- **Ethnicity**, **location**, and **crime type** were strong predictors of solvability
-- Unsolved crimes showed clustering in specific locations
-- **Decision Tree** slightly outperformed Logistic Regression with higher interpretability
-- Feature importance revealed that crime type and neighborhood had notable weight
+| Model               | Accuracy | Precision (Solved) | Recall (Solved) | F1-score | AUC  |
+|--------------------|----------|--------------------|------------------|----------|------|
+| Logistic Regression| 73.07%   | 42.05%             | **74.02%**       | 53.64%   | 0.80 |
+| Random Forest       | 82.01%   | 60.05%             | 43.44%           | 50.41%   | 0.83 |
+| Gradient Boosting   | 82.95%   | 66.00%             | 39.17%           | 49.16%   | 0.84 |
+| XGBoost (Untuned)   | **83.65%**| 66.64%            | 44.70%           | 53.51%   | 0.85 |
+| XGBoost (Tuned)     | 83.56%   | 65.50%             | **46.28%**       | **54.24%**| 0.85 |
+
+**Best Overall**: Tuned XGBoost  
+**Best Recall**: Logistic Regression  
+**Most Balanced**: Tuned XGBoost (Precision + Recall + AUC)
 
 ---
+
+## 🔍 Key Insights
+
+- **Weapon usage**, **premise type**, and **modus operandi count** were strong predictors of solvability  
+- **Location** and **crime type** influenced resolution rates significantly  
+- **Daytime crimes** had higher solve rates, likely due to witness availability  
+- **Demographics** had modest impact; age group mattered more than gender or ethnicity
+
+---
+
 
 ## Recommended Visuals to Showcase
 
@@ -66,7 +87,7 @@ Below are key visualizations featured in the notebook and project folder:
 
 1. **Unsolved Crimes by Neighborhood**
    > Visualizes the geographic distribution of unsolved cases, revealing hotspots or patterns in specific districts or zones.  
-   ![unsolved_by_location](visuals/Solve Rate and Crim Volume by Zone.png)
+   ![unsolved_by_location](visuals/unsolved_by_location.png)
 
 2. **Case Outcome by Age Group**
    > Highlights age-related patterns in case solvability, suggesting which victim age groups are more often associated with unsolved crimes.  
@@ -81,7 +102,7 @@ Below are key visualizations featured in the notebook and project folder:
    ![confusion_matrix](visuals/confusion_matrix.png)
 
 5. **Feature Importance (Random Forest Tree)**
-   > Ranks the most influential features used by the Randome Forest model to predict case solvability, aiding interpretability.
+   > Ranks the most influential features used by the Random Forest model to predict case solvability, aiding interpretability.
    ![feature_importance](visuals/feature_importance.png)
 
 ## See full analysis in the [Jupyter Notebook](./Crime_Analysis_Notebook.ipynb)
@@ -101,6 +122,15 @@ Below are key visualizations featured in the notebook and project folder:
 
 - The dataset is used only for educational purposes and cannot be shared publicly. It resembles the **San Francisco Crime Dataset**, which can be referenced for similar analysis.
 - The project emphasizes **methodology and interpretation** rather than conclusions about specific communities.
+
+---
+
+## ⚠️ Limitations & Future Work
+
+- No oversampling or class weighting applied—future versions could use SMOTE or cost-sensitive learning  
+- Dataset lacks suspect, witness, or forensic data  
+- Models trained on a subset—generalizability may vary  
+- Potential bias in crime reporting and data collection
 
 ---
 
